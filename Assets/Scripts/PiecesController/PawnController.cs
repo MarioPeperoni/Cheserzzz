@@ -2,64 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PawnController : MonoBehaviour
+public class PawnController : TemplatePieceClass
 {
-    private GameLogic gameLogic;
-    private PieceController pieceController;
-    void Start()
+    public override void createPath()
     {
-        gameLogic = GameObject.Find("GameHandler").GetComponent<GameLogic>();
-        pieceController = gameObject.GetComponent<PieceController>();
-    }
-    private void OnMouseDown()
-    {
-        if (pieceController.thisColor == gameLogic.currentPlayerColor)
-            createPath();
-        pieceController.currentlySelected = true;
-    }
-
-    private void createPath()
-    {
-        if (pieceController.currentlySelected) return;  //Return is piece is already selected
+        if (pieceController.currentlySelected) return;  //Return if piece is already selected
         if (pieceController.thisColor == GameLogic.PiecesColor.white)
         {
-            if (gameLogic.boardVar[pieceController.xIndex, pieceController.yIndex + 1].pieceColor == GameLogic.PiecesColor.empty)
+            if (pieceController.sendPathRequest(0, 1, false, true))
             {
-                pieceController.createPatch(0f, 2f, false);
-
-                if (gameLogic.boardVar[pieceController.xIndex, pieceController.yIndex + 2].pieceColor == GameLogic.PiecesColor.empty && pieceController.moveCounter == 0)
+                if (pieceController.moveCounter == 0)
                 {
-                    pieceController.createPatch(0f, 4f, false);
+                    pieceController.sendPathRequest(0, 2, false, true);
                 }
             }
-            if (gameLogic.boardVar[pieceController.xIndex - 1, pieceController.yIndex + 1].pieceColor == GameLogic.PiecesColor.black)
-            {
-                pieceController.createPatch(-2f, 2f, true);
-            }
-            if (gameLogic.boardVar[pieceController.xIndex + 1, pieceController.yIndex + 1].pieceColor == GameLogic.PiecesColor.black)
-            {
-                pieceController.createPatch(2f, 2f, true);
-            }
+            pieceController.sendPathRequest(-1, 1, true);
+            pieceController.sendPathRequest(1, 1, true);
         }
         else
         {
-            if (gameLogic.boardVar[pieceController.xIndex, pieceController.yIndex - 1].pieceColor == GameLogic.PiecesColor.empty)
+            if (pieceController.sendPathRequest(0, -1, false, true))
             {
-                pieceController.createPatch(0f, -2f, false);
-
-                if (gameLogic.boardVar[pieceController.xIndex, pieceController.yIndex - 2].pieceColor == GameLogic.PiecesColor.empty && pieceController.moveCounter == 0)
+                if (pieceController.moveCounter == 0)
                 {
-                    pieceController.createPatch(0f, -4f, false);
+                    pieceController.sendPathRequest(0, -2, false, true);
                 }
             }
-            if (gameLogic.boardVar[pieceController.xIndex - 1, pieceController.yIndex - 1].pieceColor == GameLogic.PiecesColor.white)
-            {
-                pieceController.createPatch(-2f, -2f, true);
-            }
-            if (gameLogic.boardVar[pieceController.xIndex + 1, pieceController.yIndex - 1].pieceColor == GameLogic.PiecesColor.white)
-            {
-                pieceController.createPatch(2f, -2f, true);
-            }
+            pieceController.sendPathRequest(-1, -1, true);
+            pieceController.sendPathRequest(1, -1, true);
         }
     }
 }

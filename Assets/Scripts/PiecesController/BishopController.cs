@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BishopController : MonoBehaviour
+public class BishopController : TemplatePieceClass
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void createPath()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (pieceController.currentlySelected) return;  //Return if piece is already selected
+        //Right-UP
+        for (int y = pieceController.yIndex + 1; y < 8; y++)
+        {
+            if (!pieceController.sendPathRequest((y - pieceController.yIndex), (y - pieceController.yIndex))) break;
+        }
+        //Left DOWN
+        for (int y = pieceController.yIndex - 1; y > -1; y--)
+        {
+            if (!pieceController.sendPathRequest((y - pieceController.yIndex), (y - pieceController.yIndex))) break;
+        }
+        //Left DOWN
+        for (int x = pieceController.xIndex - 1; x > -1; x--)
+        {
+            if (!pieceController.sendPathRequest((x - pieceController.xIndex), -(x - pieceController.xIndex))) break;
+        }
+        //Right-UP
+        for (int x = pieceController.xIndex + 1; x < 8; x++)
+        {
+            if (!pieceController.sendPathRequest((x - pieceController.xIndex), -(x - pieceController.xIndex))) break;
+        }
     }
 }

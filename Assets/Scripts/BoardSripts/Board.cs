@@ -5,7 +5,7 @@ using UnityEngine;
 public class Board : MonoBehaviour
 {
     [SerializeField] public BoardTheme[] boardThemes;
-    [SerializeField] private float boardSize;
+    private float boardSize = 2;
     [SerializeField] private int boardThemeID;
 
     void Start()

@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnightController : MonoBehaviour
+public class KnightController : TemplatePieceClass
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void createPath()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (pieceController.currentlySelected) return;  //Return if piece is already selected
+        pieceController.sendPathRequest(-1, 2);
+        pieceController.sendPathRequest(-2, 1);
+        pieceController.sendPathRequest(-2, -1);
+        pieceController.sendPathRequest(-1, -2);
+        pieceController.sendPathRequest(1, -2);
+        pieceController.sendPathRequest(2, -1);
+        pieceController.sendPathRequest(2, 1);
+        pieceController.sendPathRequest(1, 2);
     }
 }

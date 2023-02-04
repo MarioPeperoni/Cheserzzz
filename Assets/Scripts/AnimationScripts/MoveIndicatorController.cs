@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveIndicatorHover : MonoBehaviour
+public class MoveIndicatorController : MonoBehaviour
 {
     private bool animateIN;
     private float timer;
+    private bool destroying = false;
     private Animations currentAnimation;
+    public PieceController pieceController;
+    public bool isKillIndicator = false;
 
     private enum Animations
     {
@@ -14,10 +17,11 @@ public class MoveIndicatorHover : MonoBehaviour
         Appear,
         Leave
     }
-
     // Start the hover animation when the mouse enters the hitbox
     private void OnMouseEnter()
     {
+        if (destroying) return; //Check if object is running destroy animation
+
         animateIN = true;
         currentAnimation = Animations.Hover;
         timer = 0f;
@@ -25,18 +29,28 @@ public class MoveIndicatorHover : MonoBehaviour
     // Start the leave animation when the mouse exits the hitbox
     private void OnMouseExit()
     {
+        if (destroying) return; //Check if object is running destroy animation
+
         animateIN = false;
         currentAnimation = Animations.Hover;
         timer = 1f;
     }
+    //Send coordinates for piece to move
     private void OnMouseDown()
     {
+        pieceController.movePiece(gameObject.transform.position.x, gameObject.transform.position.y, isKillIndicator);
+    }
+    // Destroy object animation when destroying object
+    public void DestoryObject()
+    {
+        destroying = true;  //Set destroying flag (stops other animations)
         timer = 0f;
         currentAnimation = Animations.Leave;
     }
     // Start the appear animation when the object is created
     public void Start()
     {
+        if (isKillIndicator) gameObject.GetComponent<SpriteRenderer>().color = new Color(0.7f, 0f, 0f, 0.8f);
         currentAnimation = Animations.Appear;
         transform.localScale = Vector3.zero;
     }

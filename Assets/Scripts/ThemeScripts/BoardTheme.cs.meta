@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 3ac0427c093334e68bde351262ac7cbb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - customBG: {instanceID: 0}
+  - w_pawnSprite: {fileID: 21300000, guid: 4b424d39dbbe24d9598e480d7c6e5a3a, type: 3}
+  - w_knightSprite: {fileID: 21300000, guid: 50c6eb476f9474ae684c18137571bc5f, type: 3}
+  - w_bishopSprite: {fileID: 21300000, guid: cbbccbf7cf2d34cfc8e1b7acd0f13923, type: 3}
+  - w_rookSprite: {fileID: 21300000, guid: 222118815bf85465781a26ede3bead66, type: 3}
+  - w_queenSprite: {fileID: 21300000, guid: 1b701972bfcfd4d798671df3910adccc, type: 3}
+  - w_kingSprite: {fileID: 21300000, guid: 644ceb167166e4074a3174f92527a2d7, type: 3}
+  - b_pawnSprite: {fileID: 21300000, guid: 764f785728c3c490aab51773a022bee0, type: 3}
+  - b_knightSprite: {fileID: 21300000, guid: 4243e410ae3d849c5822b4cb2b918d72, type: 3}
+  - b_bishopSprite: {fileID: 21300000, guid: 76082d6981cd74e1b9ca4ebd34df93fe, type: 3}
+  - b_rookSprite: {fileID: 21300000, guid: 222118815bf85465781a26ede3bead66, type: 3}
+  - b_queenSprite: {fileID: 21300000, guid: fba08620db4274228a7032676b7abd17, type: 3}
+  - b_kingSprite: {fileID: 21300000, guid: ee2cee4adf52b453d935dc0bbe161ff5, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Board : MonoBehaviour
+public class BoardDrawer : MonoBehaviour
 {
-    [SerializeField] public BoardTheme[] boardThemes;
-    private float boardSize = 2;
-    [SerializeField] private int boardThemeID;
+    public Color lightColor;
+    public Color darkColor;
+    public bool drawFrame;
 
     void Start()
     {
@@ -21,19 +21,20 @@ public class Board : MonoBehaviour
             {
                 bool isLightSquare = (file + rank) % 2 != 0;
 
-                var squareColour = (isLightSquare) ? boardThemes[boardThemeID].lightColor : boardThemes[boardThemeID].darkColor;
-                var position = new Vector2(-3.5f * boardSize + (file * boardSize), -3.5f * boardSize + (rank * boardSize));
+                var squareColour = (isLightSquare) ? lightColor : darkColor;
+                var position = new Vector2(-3.5f * 2f + (file * 2f), -3.5f * 2f + (rank * 2f));
 
-                DrawSquare(squareColour, position);
+                DrawSquare(squareColour, position, 2f); //Draw all board squares, all board squares have size of 2
             }
         }
+        if (drawFrame) DrawSquare(lightColor, Vector2.zero, 16.5f);
     }
-    private void DrawSquare(Color color, Vector2 position)
+    private void DrawSquare(Color color, Vector2 position, float size)
     {
         GameObject square = GameObject.CreatePrimitive(PrimitiveType.Quad);
         square.transform.position = position;
         square.transform.parent = this.transform;
-        square.transform.localScale = new Vector2(boardSize, boardSize);
+        square.transform.localScale = new Vector2(size, size);
         square.GetComponent<Renderer>().material.shader = Shader.Find("Unlit/Color");
         square.GetComponent<Renderer>().material.color = color;
     }

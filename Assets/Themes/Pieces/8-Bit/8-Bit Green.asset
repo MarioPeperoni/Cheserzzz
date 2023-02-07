@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c6c117ea6ea44f5a1788912651aac2, type: 3}
+  m_Name: 8-Bit Green
+  m_EditorClassIdentifier: 
+  w_pawnSprite: {fileID: 21300000, guid: 2f421416cbb8246568fb9b885434bdbf, type: 3}
+  w_knightSprite: {fileID: 21300000, guid: e299fd76638bb451cba392ceb015bb4e, type: 3}
+  w_bishopSprite: {fileID: 21300000, guid: ec5cd2734dc774275859da264d161660, type: 3}
+  w_rookSprite: {fileID: 21300000, guid: 822d0ee199eea400e9a59e3730ae42cc, type: 3}
+  w_queenSprite: {fileID: 21300000, guid: caef15ccdbef3432db98bdb1b32942eb, type: 3}
+  w_kingSprite: {fileID: 21300000, guid: 894d2fb3aedd14414bcb644155577b56, type: 3}
+  b_pawnSprite: {fileID: 21300000, guid: 99ec16f56fef4489ca9c45d8f5ab84b7, type: 3}
+  b_knightSprite: {fileID: 21300000, guid: 16732976d65ef4434a54abab0e9b7261, type: 3}
+  b_bishopSprite: {fileID: 21300000, guid: 7fc7f47b9785d48e7b928b7ee44d073c, type: 3}
+  b_rookSprite: {fileID: 21300000, guid: 272d23eba8e164c64950fff835f34183, type: 3}
+  b_queenSprite: {fileID: 21300000, guid: 577827ad66cab4fcdaf6b8b621305967, type: 3}
+  b_kingSprite: {fileID: 21300000, guid: 83f57e4d5843b42d5b6cfac64eaac99a, type: 3}

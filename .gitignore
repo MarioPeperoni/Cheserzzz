@@ -1,2 +1,13 @@
 *.meta
+.vscode
+chesserzz
+Library
+Logs
+obj
+Packages
+ProjectSettings
+Temp
+UserSettings
+Assembly-CSharp.csproj
+Chesserzzz.sln
 TextMesh Pro

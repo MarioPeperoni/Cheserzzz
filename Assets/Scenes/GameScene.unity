@@ -156,8 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773ee7bfbe085462791ea2fed880c66b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightColor: {r: 0, g: 0, b: 0, a: 0}
-  darkColor: {r: 0, g: 0, b: 0, a: 0}
+  lightColor: {r: 1, g: 0, b: 1, a: 1}
+  darkColor: {r: 0.74502754, g: 0, b: 1, a: 1}
   drawFrame: 0
 --- !u!4 &82490758
 Transform:
@@ -314,13 +314,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardThemeSelected: 0
   piecesThemeSelected: 0
-  themeSetsSelected: 2
+  themeSetsSelected: 1
   boardThemes:
   - {fileID: 11400000, guid: 8cb0e03103f544f2ca034923f994cab0, type: 2}
   - {fileID: 11400000, guid: 4c0e67799f3a74eb99301d00092bf4b4, type: 2}
   - {fileID: 11400000, guid: 7e4512d23f9fd44d3acade32267e7615, type: 2}
   - {fileID: 11400000, guid: 83c7623caf24d4e369112e5cbbb20359, type: 2}
   - {fileID: 11400000, guid: a8b2b116e26844d2fbda061380ad3098, type: 2}
+  - {fileID: 11400000, guid: 3addcb7be0f714ce4bef26b851553042, type: 2}
   piecesThemes:
   - {fileID: 11400000, guid: f4c8b1bacd0a8416f80415b97bdcd91a, type: 2}
   - {fileID: 11400000, guid: ea447b98271f243c39f623df31d5ef81, type: 2}

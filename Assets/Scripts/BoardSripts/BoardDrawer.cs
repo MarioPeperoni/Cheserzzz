@@ -27,7 +27,7 @@ public class BoardDrawer : MonoBehaviour
                 DrawSquare(squareColour, position, 2f); //Draw all board squares, all board squares have size of 2
             }
         }
-        if (drawFrame) DrawSquare(lightColor, Vector2.zero, 16.5f);
+        if (drawFrame) DrawSquare(lightColor, Vector2.zero, 16.5f); //Draw frame
     }
     private void DrawSquare(Color color, Vector2 position, float size)
     {

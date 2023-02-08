@@ -32,4 +32,12 @@ public class PawnController : TemplatePieceClass
             pieceController.sendPathRequest(1, -1, true);
         }
     }
+    public void checkPromo()
+    {
+        if (pieceController.yIndex == 0 || pieceController.yIndex == 7)
+        {
+            gameLogic.InstantiatePiece(pieceController.thisColor == GameLogic.PiecesColor.white ? "w_queen" : "b_queen", pieceController.xCoor, pieceController.yCoor);   //Promote to queen piece
+            Destroy(gameObject);    //Destroy pawn piece
+        }
+    }
 }

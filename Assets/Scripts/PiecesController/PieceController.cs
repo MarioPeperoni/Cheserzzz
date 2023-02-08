@@ -36,12 +36,7 @@ public class PieceController : MonoBehaviour
 
             if (!hitbox.bounds.Contains(mousePos))  // Check if mouse is not in hitbox
             {
-                foreach (MoveIndicatorController indicator in pathIndicators)   // Destory every indicator in list
-                {
-                    indicator.DestoryObject();
-                }
-                currentlySelected = false;  // Unselect piece
-                pathIndicators.Clear(); // Clear list
+                destroyPath();
             }
         }
         // Check if piece is in right spot in code, used for checking if piece has been killed
@@ -58,6 +53,16 @@ public class PieceController : MonoBehaviour
         gameObject.transform.position = Vector2.Lerp(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), new Vector2(xCoor, yCoor), animationTimer);
     }
 
+    private void destroyPath()
+    {
+        foreach (MoveIndicatorController indicator in pathIndicators)   // Destory every indicator in list
+        {
+            indicator.DestoryObject();
+        }
+        currentlySelected = false;  // Unselect piece
+        pathIndicators.Clear(); // Clear list
+    }
+
     //Create path for moving piece
     public void createPatch(float xOffset, float yOffset, bool killPatch)
     {
@@ -66,7 +71,7 @@ public class PieceController : MonoBehaviour
         if (killPatch) moveIndicator.GetComponent<MoveIndicatorController>().isKillIndicator = true;    //Set property if kill indicator
         pathIndicators.Add(moveIndicator.GetComponent<MoveIndicatorController>());  //Add path indicator to list for later destroying
     }
-    public void movePiece(float xCoorGoTo, float yCoorGoTo, bool kill)
+    public void movePiece(float xCoorGoTo, float yCoorGoTo)
     {
         audioSource.Play(); //Play move sound
         movePieceAnimation = true;  //Set animation
@@ -80,6 +85,8 @@ public class PieceController : MonoBehaviour
         gameLogic.boardVar[xIndex, yIndex].pieceType = thisType;    //Set piece to new squar
         gameLogic.boardVar[xIndex, yIndex].pieceColor = thisColor;
         moveCounter++;  //Add move to move counter
+        destroyPath();  //Destroy patch
+        if (thisType == GameLogic.PiecesTypes.pawn) gameObject.GetComponent<PawnController>().checkPromo(); //Check if moved to promotion area
         gameLogic.changePlayer();   //Change player turn
     }
     public bool sendPathRequest(int xIndexOffset, int yIndexOffset, bool killOnly = false, bool moveOnly = false)

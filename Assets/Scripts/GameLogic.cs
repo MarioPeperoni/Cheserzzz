@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     public OnePiece[,] boardVar;
-
     public PiecesColor currentPlayerColor;
     void Start()
     {
@@ -166,6 +165,10 @@ public class GameLogic : MonoBehaviour
     public int translateFromXY(float coordinate)
     {
         return (((int)coordinate + 7) / 2);
+    }
+    public float translateToXY(int index)
+    {
+        return (((float)index - 7) * 2);
     }
 
     //Change player

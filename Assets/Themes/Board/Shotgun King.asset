@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ac0427c093334e68bde351262ac7cbb, type: 3}
-  m_Name: Blue
+  m_Name: Shotgun King
   m_EditorClassIdentifier: 
-  lightColor: {r: 0.91764706, g: 0.9137255, b: 0.8235294, a: 1}
-  darkColor: {r: 0.29411766, g: 0.4509804, b: 0.6, a: 1}
-  customBG: {r: 0.13725491, g: 0.13725491, b: 0.13725491, a: 1}
+  lightColor: {r: 1, g: 0.8784314, b: 0.8, a: 1}
+  darkColor: {r: 0.50980395, g: 0.4627451, b: 0.6117647, a: 1}
+  customBG: {r: 0.05490196, g: 0.08235294, b: 0.18039216, a: 1}
   drawFrame: 1

@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightColor: {r: 0.9764706, g: 0.8745098, b: 0.69411767, a: 1}
   darkColor: {r: 0.63529414, g: 0.4392157, b: 0.26666668, a: 1}
+  customBG: {r: 0.13725491, g: 0.13725491, b: 0.13725491, a: 1}
+  drawFrame: 1

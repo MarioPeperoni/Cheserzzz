@@ -38,7 +38,7 @@ public class MoveIndicatorController : MonoBehaviour
     //Send coordinates for piece to move
     private void OnMouseDown()
     {
-        pieceController.movePiece(gameObject.transform.position.x, gameObject.transform.position.y, isKillIndicator);
+        pieceController.movePiece(gameObject.transform.position.x, gameObject.transform.position.y);
     }
     // Destroy object animation when destroying object
     public void DestoryObject()

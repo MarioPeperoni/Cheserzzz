@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RookController : TemplatePieceClass
 {
+    public bool castlingAlowed = true;
     public override void createPath()
     {
         if (pieceController.currentlySelected) return;  //Return if piece is already selected
@@ -27,6 +28,5 @@ public class RookController : TemplatePieceClass
         {
             if (!pieceController.sendPathRequest(x - pieceController.xIndex, 0)) break;
         }
-
     }
 }

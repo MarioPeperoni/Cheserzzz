@@ -10,6 +10,7 @@ public class MoveIndicatorController : MonoBehaviour
     private Animations currentAnimation;
     public PieceController pieceController;
     public bool isKillIndicator = false;
+    public bool isCastleIndicator = false;
 
     private enum Animations
     {
@@ -38,7 +39,7 @@ public class MoveIndicatorController : MonoBehaviour
     //Send coordinates for piece to move
     private void OnMouseDown()
     {
-        pieceController.movePiece(gameObject.transform.position.x, gameObject.transform.position.y);
+        pieceController.movePiece(gameObject.transform.position.x, gameObject.transform.position.y);    //Move piece to pos of the indicator
     }
     // Destroy object animation when destroying object
     public void DestoryObject()

@@ -23,6 +23,7 @@ public class GameLogic : MonoBehaviour
     {
         public PiecesTypes pieceType = PiecesTypes.empty;
         public PiecesColor pieceColor = PiecesColor.empty;
+        public GameObject pieceGameObject = null;
     }
 
     public enum PiecesTypes
@@ -112,6 +113,8 @@ public class GameLogic : MonoBehaviour
                     break;
                 }
         }
+
+        boardVar[(int)x, (int)y].pieceGameObject = piece;   //Add reference to gameobject in boardVarArray
     }
 
     //Calls new game
@@ -162,14 +165,9 @@ public class GameLogic : MonoBehaviour
     }
 
     //Translates from coordinates in board to indexes used in variables
-    public int translateFromXY(float coordinate)
-    {
-        return (((int)coordinate + 7) / 2);
-    }
-    public float translateToXY(int index)
-    {
-        return (((float)index - 7) * 2);
-    }
+    public int translateFromXY(float coordinate) => (((int)coordinate + 7) / 2);
+
+    public float translateToXY(int index) => (((float)index - 7) * 2);
 
     //Change player
     public void changePlayer()

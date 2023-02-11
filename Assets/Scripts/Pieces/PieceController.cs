@@ -11,16 +11,19 @@ public class PieceController : MonoBehaviour
     //Indexes in board variable
     public int xIndex;
     public int yIndex;
+
+    //Piece properties
     public GameLogic.PiecesColor thisColor; //Color of piece
     public GameLogic.PiecesTypes thisType;  //Type of piece
     public bool currentlySelected = false;
+
     private BoxCollider2D hitbox;
     private List<MoveIndicatorController> pathIndicators;   //List of pathIndicators shown
     public int moveCounter;
     private bool movePieceAnimation;    //Move animation
     private float animationTimer;
     private AudioSource audioSource;
-    private GameLogic gameLogic;
+    public GameLogic gameLogic;
     private void Start()
     {
         gameLogic = GameObject.Find("GameHandler").GetComponent<GameLogic>();
@@ -78,15 +81,19 @@ public class PieceController : MonoBehaviour
         animationTimer = 0f;
         gameLogic.boardVar[xIndex, yIndex].pieceType = GameLogic.PiecesTypes.empty; //Clear square of piece
         gameLogic.boardVar[xIndex, yIndex].pieceColor = GameLogic.PiecesColor.empty;
+        gameLogic.boardVar[xIndex, yIndex].pieceGameObject = null;
         xCoor = xCoorGoTo;  //Change coordinates
         yCoor = yCoorGoTo;
         xIndex = gameLogic.translateFromXY(xCoor);
         yIndex = gameLogic.translateFromXY(yCoor);
         gameLogic.boardVar[xIndex, yIndex].pieceType = thisType;    //Set piece to new squar
         gameLogic.boardVar[xIndex, yIndex].pieceColor = thisColor;
+        gameLogic.boardVar[xIndex, yIndex].pieceGameObject = gameObject;
         moveCounter++;  //Add move to move counter
         destroyPath();  //Destroy patch
         if (thisType == GameLogic.PiecesTypes.pawn) gameObject.GetComponent<PawnController>().checkPromo(); //Check if moved to promotion area
+        if (thisType == GameLogic.PiecesTypes.king) gameObject.GetComponent<KingController>().castlingAlowed = false;   //If king moved disable castling for that king
+        if (thisType == GameLogic.PiecesTypes.rook) gameObject.GetComponent<RookController>().castlingAlowed = false;   //If rook moved disable castling for that rook
         gameLogic.changePlayer();   //Change player turn
     }
     public bool sendPathRequest(int xIndexOffset, int yIndexOffset, bool killOnly = false, bool moveOnly = false)

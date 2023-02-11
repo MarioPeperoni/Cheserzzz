@@ -312,9 +312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e74f06bce3a7f4081863cb6a0883865b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardThemeSelected: 0
-  piecesThemeSelected: 0
-  themeSetsSelected: 1
+  boardThemeSelected: 5
+  piecesThemeSelected: 1
+  themeSetsSelected: 2
   boardThemes:
   - {fileID: 11400000, guid: 8cb0e03103f544f2ca034923f994cab0, type: 2}
   - {fileID: 11400000, guid: 4c0e67799f3a74eb99301d00092bf4b4, type: 2}
@@ -625,6 +625,7 @@ MonoBehaviour:
   thisType: 0
   currentlySelected: 0
   moveCounter: 0
+  gameLogic: {fileID: 0}
 --- !u!1 &208271328
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,6 +786,7 @@ MonoBehaviour:
   thisType: 0
   currentlySelected: 0
   moveCounter: 0
+  gameLogic: {fileID: 0}
 --- !u!1 &290486362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,6 +1627,7 @@ MonoBehaviour:
   thisType: 0
   currentlySelected: 0
   moveCounter: 0
+  gameLogic: {fileID: 0}
 --- !u!1 &1161353334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1727,6 +1730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameLogic: {fileID: 0}
   pieceController: {fileID: 0}
+  castlingAlowed: 1
 --- !u!61 &1161353338
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1785,6 +1789,7 @@ MonoBehaviour:
   thisType: 0
   currentlySelected: 0
   moveCounter: 0
+  gameLogic: {fileID: 0}
 --- !u!1 &1174127256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1948,6 +1953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceController: {fileID: 0}
   isKillIndicator: 0
+  isCastleIndicator: 0
 --- !u!1 &1312651045
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,6 +2056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameLogic: {fileID: 0}
   pieceController: {fileID: 0}
+  castlingAlowed: 1
 --- !u!61 &1312651049
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2108,6 +2115,7 @@ MonoBehaviour:
   thisType: 0
   currentlySelected: 0
   moveCounter: 0
+  gameLogic: {fileID: 0}
 --- !u!1 &1350865191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2268,6 +2276,7 @@ MonoBehaviour:
   thisType: 0
   currentlySelected: 0
   moveCounter: 0
+  gameLogic: {fileID: 0}
 --- !u!1 &1363892396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,6 +2379,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameLogic: {fileID: 0}
   pieceController: {fileID: 0}
+  castlingAlowed: 1
+  castleHandler: {fileID: 0}
 --- !u!61 &1363892400
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2428,6 +2439,7 @@ MonoBehaviour:
   thisType: 0
   currentlySelected: 0
   moveCounter: 0
+  gameLogic: {fileID: 0}
 --- !u!1 &1418529117
 GameObject:
   m_ObjectHideFlags: 0
@@ -2588,6 +2600,7 @@ MonoBehaviour:
   thisType: 0
   currentlySelected: 0
   moveCounter: 0
+  gameLogic: {fileID: 0}
 --- !u!1 &1446577113
 GameObject:
   m_ObjectHideFlags: 0
@@ -2690,6 +2703,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameLogic: {fileID: 0}
   pieceController: {fileID: 0}
+  castlingAlowed: 1
+  castleHandler: {fileID: 0}
 --- !u!61 &1446577117
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2748,6 +2763,7 @@ MonoBehaviour:
   thisType: 0
   currentlySelected: 0
   moveCounter: 0
+  gameLogic: {fileID: 0}
 --- !u!1 &1472962029
 GameObject:
   m_ObjectHideFlags: 0
@@ -2908,6 +2924,7 @@ MonoBehaviour:
   thisType: 0
   currentlySelected: 0
   moveCounter: 0
+  gameLogic: {fileID: 0}
 --- !u!1 &1475707069
 GameObject:
   m_ObjectHideFlags: 0
@@ -3068,6 +3085,7 @@ MonoBehaviour:
   thisType: 0
   currentlySelected: 0
   moveCounter: 0
+  gameLogic: {fileID: 0}
 --- !u!1 &1918125453
 GameObject:
   m_ObjectHideFlags: 0
@@ -3228,3 +3246,4 @@ MonoBehaviour:
   thisType: 0
   currentlySelected: 0
   moveCounter: 0
+  gameLogic: {fileID: 0}

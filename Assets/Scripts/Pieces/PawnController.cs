@@ -9,27 +9,27 @@ public class PawnController : TemplatePieceClass
         if (pieceController.currentlySelected) return;  //Return if piece is already selected
         if (pieceController.thisColor == GameLogic.PiecesColor.white)
         {
-            if (pieceController.sendPathRequest(0, 1, false, true))
+            if (pieceController.sendPathRequest(0, 1, GameLogic.PathRequestTypes.moveOnly))
             {
                 if (pieceController.moveCounter == 0)
                 {
-                    pieceController.sendPathRequest(0, 2, false, true);
+                    pieceController.sendPathRequest(0, 2, GameLogic.PathRequestTypes.moveOnly);
                 }
             }
-            pieceController.sendPathRequest(-1, 1, true);
-            pieceController.sendPathRequest(1, 1, true);
+            pieceController.sendPathRequest(-1, 1, GameLogic.PathRequestTypes.killOnly);
+            pieceController.sendPathRequest(1, 1, GameLogic.PathRequestTypes.killOnly);
         }
         else
         {
-            if (pieceController.sendPathRequest(0, -1, false, true))
+            if (pieceController.sendPathRequest(0, -1, GameLogic.PathRequestTypes.moveOnly))
             {
                 if (pieceController.moveCounter == 0)
                 {
-                    pieceController.sendPathRequest(0, -2, false, true);
+                    pieceController.sendPathRequest(0, -2, GameLogic.PathRequestTypes.moveOnly);
                 }
             }
-            pieceController.sendPathRequest(-1, -1, true);
-            pieceController.sendPathRequest(1, -1, true);
+            pieceController.sendPathRequest(-1, -1, GameLogic.PathRequestTypes.killOnly);
+            pieceController.sendPathRequest(1, -1, GameLogic.PathRequestTypes.killOnly);
         }
     }
     public void checkPromo()

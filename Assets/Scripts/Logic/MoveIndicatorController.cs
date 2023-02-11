@@ -9,9 +9,7 @@ public class MoveIndicatorController : MonoBehaviour
     private bool destroying = false;
     private Animations currentAnimation;
     public PieceController pieceController;
-    public bool isKillIndicator = false;
-    public bool isCastleIndicator = false;
-
+    public GameLogic.PathType pathType;
     private enum Animations
     {
         Hover,
@@ -39,6 +37,10 @@ public class MoveIndicatorController : MonoBehaviour
     //Send coordinates for piece to move
     private void OnMouseDown()
     {
+        if (pathType == GameLogic.PathType.castle)  //If indicator is for castle action
+        {
+            pieceController.gameObject.GetComponent<KingController>().castlePiece(gameObject.transform.position.x, gameObject.transform.position.y);    //Castle pieces
+        }
         pieceController.movePiece(gameObject.transform.position.x, gameObject.transform.position.y);    //Move piece to pos of the indicator
     }
     // Destroy object animation when destroying object
@@ -51,7 +53,7 @@ public class MoveIndicatorController : MonoBehaviour
     // Start the appear animation when the object is created
     public void Start()
     {
-        if (isKillIndicator) gameObject.GetComponent<SpriteRenderer>().color = new Color(0.7f, 0f, 0f, 0.8f);
+        if (pathType == GameLogic.PathType.kill) gameObject.GetComponent<SpriteRenderer>().color = new Color(0.7f, 0f, 0f, 0.8f);   //Change path color to red if kill path
         currentAnimation = Animations.Appear;
         transform.localScale = Vector3.zero;
     }

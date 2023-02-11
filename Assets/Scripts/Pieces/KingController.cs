@@ -28,7 +28,7 @@ public class KingController : TemplatePieceClass
                 {
                     if (gameLogic.boardVar[1, pieceController.yIndex].pieceGameObject == null && gameLogic.boardVar[2, pieceController.yIndex].pieceGameObject == null && gameLogic.boardVar[3, pieceController.yIndex].pieceGameObject == null)
                     {
-                        pieceController.sendPathRequest(-2, 0, false, true);
+                        pieceController.sendPathRequest(-2, 0, GameLogic.PathRequestTypes.castle);
                     }
                 }
             }
@@ -38,11 +38,15 @@ public class KingController : TemplatePieceClass
                 {
                     if (gameLogic.boardVar[5, pieceController.yIndex].pieceGameObject == null && gameLogic.boardVar[6, pieceController.yIndex].pieceGameObject == null)
                     {
-                        pieceController.sendPathRequest(2, 0, false, true);
+                        pieceController.sendPathRequest(2, 0, GameLogic.PathRequestTypes.castle);
                     }
                 }
             }
         }
         #endregion
+    }
+    public void castlePiece(float pointerPositionX, float pointerPositionY)
+    {
+        gameLogic.boardVar[gameLogic.translateFromXY(pointerPositionX) == 2 ? 0 : 7, pieceController.yIndex].pieceGameObject.GetComponent<PieceController>().movePiece((gameLogic.translateFromXY(pointerPositionX) == 2 ? -1f : 3f), pieceController.yCoor, false);    //Move rook piece to defined sqruares
     }
 }

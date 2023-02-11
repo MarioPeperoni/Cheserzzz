@@ -44,6 +44,21 @@ public class GameLogic : MonoBehaviour
         empty
     }
 
+    public enum PathRequestTypes
+    {
+        normal,
+        killOnly,
+        moveOnly,
+        castle
+    }
+
+    public enum PathType
+    {
+        normal,
+        kill,
+        castle
+    }
+
     public void InstantiatePiece(string pieceName, float x, float y)
     {
         GameObject piece = Instantiate(GameObject.Find(pieceName), new Vector2(x, y), Quaternion.identity); //Instantiate piece with variables specified

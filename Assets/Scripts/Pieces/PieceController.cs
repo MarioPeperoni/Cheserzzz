@@ -67,14 +67,14 @@ public class PieceController : MonoBehaviour
     }
 
     //Create path for moving piece
-    public void createPatch(float xOffset, float yOffset, bool killPatch)
+    public void createPatch(float xOffset, float yOffset, GameLogic.PathType pathType = GameLogic.PathType.normal)
     {
         GameObject moveIndicator = Instantiate(GameObject.Find("MoveIndicator"), new Vector2(xCoor + xOffset, yCoor + yOffset), Quaternion.identity);   //Set indicator
         moveIndicator.GetComponent<MoveIndicatorController>().pieceController = this;
-        if (killPatch) moveIndicator.GetComponent<MoveIndicatorController>().isKillIndicator = true;    //Set property if kill indicator
+        moveIndicator.GetComponent<MoveIndicatorController>().pathType = pathType;    //Set path type
         pathIndicators.Add(moveIndicator.GetComponent<MoveIndicatorController>());  //Add path indicator to list for later destroying
     }
-    public void movePiece(float xCoorGoTo, float yCoorGoTo)
+    public void movePiece(float xCoorGoTo, float yCoorGoTo, bool changePlayer = true)
     {
         audioSource.Play(); //Play move sound
         movePieceAnimation = true;  //Set animation
@@ -94,24 +94,24 @@ public class PieceController : MonoBehaviour
         if (thisType == GameLogic.PiecesTypes.pawn) gameObject.GetComponent<PawnController>().checkPromo(); //Check if moved to promotion area
         if (thisType == GameLogic.PiecesTypes.king) gameObject.GetComponent<KingController>().castlingAlowed = false;   //If king moved disable castling for that king
         if (thisType == GameLogic.PiecesTypes.rook) gameObject.GetComponent<RookController>().castlingAlowed = false;   //If rook moved disable castling for that rook
-        gameLogic.changePlayer();   //Change player turn
+        if (changePlayer) gameLogic.changePlayer();   //Change player turn
     }
-    public bool sendPathRequest(int xIndexOffset, int yIndexOffset, bool killOnly = false, bool moveOnly = false)
+    public bool sendPathRequest(int xIndexOffset, int yIndexOffset, GameLogic.PathRequestTypes requestType = GameLogic.PathRequestTypes.normal)
     {
         GameLogic.PiecesColor enemyColor;   //Get color of enemy
         enemyColor = (thisColor == GameLogic.PiecesColor.white) ? GameLogic.PiecesColor.black : GameLogic.PiecesColor.white;
         if ((xIndex + xIndexOffset) > 7 || (xIndex + xIndexOffset) < 0) return false;   //Checks if x location is not out of bounds
         if ((yIndex + yIndexOffset) > 7 || (yIndex + yIndexOffset) < 0) return false;   //Checks if y location is not out of bounds
-        if (gameLogic.boardVar[xIndex + xIndexOffset, yIndex + yIndexOffset].pieceColor == GameLogic.PiecesColor.empty && !killOnly)    //Create path if square is empty and path is not kill only
+        if (gameLogic.boardVar[xIndex + xIndexOffset, yIndex + yIndexOffset].pieceColor == GameLogic.PiecesColor.empty && requestType != GameLogic.PathRequestTypes.killOnly)    //Create path if square is empty and path is not kill only
         {
-            createPatch(xIndexOffset * 2f, yIndexOffset * 2f, false);   //Create path
+            createPatch(xIndexOffset * 2f, yIndexOffset * 2f, requestType == GameLogic.PathRequestTypes.castle ? GameLogic.PathType.castle : GameLogic.PathType.normal);   //Create path and check if path type is castle
             return true;
         }
         else
         {
-            if (gameLogic.boardVar[xIndex + xIndexOffset, yIndex + yIndexOffset].pieceColor == enemyColor && !moveOnly) //Create kill path if enemy stands in square and path is not move only
+            if (gameLogic.boardVar[xIndex + xIndexOffset, yIndex + yIndexOffset].pieceColor == enemyColor && requestType != GameLogic.PathRequestTypes.moveOnly) //Create kill path if enemy stands in square and path is not move only
             {
-                createPatch(xIndexOffset * 2f, yIndexOffset * 2f, true);    //Create kill path
+                createPatch(xIndexOffset * 2f, yIndexOffset * 2f, GameLogic.PathType.kill);    //Create kill path
                 return false;
             }
         }
